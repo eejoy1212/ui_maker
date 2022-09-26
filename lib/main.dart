@@ -1,19 +1,21 @@
+// ignore_for_file: prefer_const_constructors, avoid_print, unnecessary_new, prefer_interpolation_to_compose_strings, unused_element
+
 import 'dart:developer';
 import 'dart:io';
+
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
 import 'package:showcaseview/showcaseview.dart';
+import 'package:window_manager/window_manager.dart';
+
+import 'package:ui_maker/components/button/wgs_floation_action_btn.dart';
+import 'package:ui_maker/components/card/row_col_selected_card.dart';
 import 'package:ui_maker/components/child_pos_area.dart';
-import 'package:ui_maker/components/row_col_selected_card.dart';
-import 'package:ui_maker/components/wgs_appbar.dart';
-import 'package:ui_maker/components/wgs_floation_action_btn.dart';
-import 'package:ui_maker/components/wgs_sider_bar.dart';
-import 'package:ui_maker/ctrl.dart';
+import 'package:ui_maker/controller/ctrl.dart';
 import 'package:ui_maker/model/grid_widget.dart';
 import 'package:ui_maker/resizable_widget.dart';
 import 'package:ui_maker/style/color.dart';
 import 'package:ui_maker/style/text.dart';
-import 'package:window_manager/window_manager.dart';
 
 GlobalKey one = GlobalKey();
 GlobalKey two = GlobalKey();
@@ -78,8 +80,8 @@ void initUI() {
           childPosId: Ctrl.to.gridWidgetsForFile[j].childPosId.obs,
           name: Ctrl.to.gridWidgetsForFile[j].name.obs,
           className: Ctrl.to.gridWidgetsForFile[j].className.obs,
-          menuId: (Ctrl.to.gridWidgetsForFile[j].menuId + 1).obs,
-          menuSubId: (Ctrl.to.gridWidgetsForFile[j].menuSubId + 1).obs,
+          menuId: (Ctrl.to.gridWidgetsForFile[j].menuId).obs,
+          menuSubId: (Ctrl.to.gridWidgetsForFile[j].menuSubId).obs,
 
           // height: Ctrl.to.gridWidgetsForFile[j].height.value,
           // width: Ctrl.to.gridWidgetsForFile[j].width.value,
@@ -95,13 +97,16 @@ void initUI() {
       //   Ctrl.to.gridWidgetsForFile[k].width,
       //   Ctrl.to.gridWidgetsForFile[k].height,
       // );
-      Ctrl.to.gridWidgets[k].top.value = Ctrl.to.gridWidgetsForFile[k].top;
+      Ctrl.to.gridWidgets[k].top.value =
+          (Ctrl.to.gridWidgetsForFile[k].top / 100) * 360;
       log('top${Ctrl.to.gridWidgetsForFile[k].top}%는 픽셀로 얼마?? : ${Ctrl.to.gridWidgets[k].top.value}');
 
-      Ctrl.to.gridWidgets[k].left.value = Ctrl.to.gridWidgetsForFile[k].left;
-      Ctrl.to.gridWidgets[k].width.value = Ctrl.to.gridWidgetsForFile[k].width;
+      Ctrl.to.gridWidgets[k].left.value =
+          (Ctrl.to.gridWidgetsForFile[k].left / 100) * 640;
+      Ctrl.to.gridWidgets[k].width.value =
+          (Ctrl.to.gridWidgetsForFile[k].width / 100) * 640;
       Ctrl.to.gridWidgets[k].height.value =
-          Ctrl.to.gridWidgetsForFile[k].height;
+          (Ctrl.to.gridWidgetsForFile[k].height / 100) * 360;
       Ctrl.to.gridWidgets[k].widgetColor.value =
           Ctrl.to.gridWidgetsForFile[k].color;
     }
@@ -189,7 +194,7 @@ class UIMaker extends StatelessWidget {
             if (index == 1) {
               return Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 236,
                     child: Padding(
                       padding: const EdgeInsets.all(10),
@@ -220,9 +225,9 @@ class UIMaker extends StatelessWidget {
                           Ctrl.to.modifiedMenuId.value = '';
                           Ctrl.to.modifiedSubMenuId.value = '';
                           Ctrl.to.modifiedChildPosId.value = '';
-                          Ctrl.to.gridWidgets.forEach((element) {
+                          for (var element in Ctrl.to.gridWidgets) {
                             element.isHide.value = true;
-                          });
+                          }
                         },
                         child: const ChildPosArea()),
 
@@ -536,7 +541,7 @@ class WidgetPositionCard extends StatelessWidget {
                   (idx) => Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                           width: 93,
                           child: Text('위젯_${idx + 1}', style: cardTitle)),
                       Text(

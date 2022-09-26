@@ -23,7 +23,7 @@ class WGSFAB extends StatelessWidget {
           width: 56,
           height: 56,
           decoration: BoxDecoration(
-            boxShadow: [
+            boxShadow: const [
               // BoxShadow(
               //   color: Colors.grey.withOpacity(0.5),
               //   spreadRadius: 5,

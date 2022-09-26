@@ -1,5 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:ui_maker/ctrl.dart';
+import 'package:ui_maker/controller/ctrl.dart';
 
 class ShowWidgetListBtn extends StatelessWidget {
   const ShowWidgetListBtn({Key? key}) : super(key: key);
@@ -12,16 +12,16 @@ class ShowWidgetListBtn extends StatelessWidget {
         width: 204,
         child: Button(
           style: ButtonStyle(
-            shape: ButtonState.all(RoundedRectangleBorder()),
-            textStyle: ButtonState.all(TextStyle(
+            shape: ButtonState.all(const RoundedRectangleBorder()),
+            textStyle: ButtonState.all(const TextStyle(
               fontSize: 10,
               color: Colors.black,
             )),
             backgroundColor: ButtonState.all(
-              Color(0xff668FCD),
+              const Color(0xff668FCD),
             ),
           ),
-          child: Text(
+          child: const Text(
             '위젯 리스트 보기',
             style: TextStyle(color: Colors.black),
           ),

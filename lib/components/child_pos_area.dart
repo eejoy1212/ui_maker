@@ -1,6 +1,8 @@
+// ignore_for_file: unused_import
+
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
-import 'package:ui_maker/ctrl.dart';
+import 'package:ui_maker/controller/ctrl.dart';
 import 'package:ui_maker/resizable_widget.dart';
 import 'package:ui_maker/style/color.dart';
 

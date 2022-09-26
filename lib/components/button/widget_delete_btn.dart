@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:ui_maker/components/wgs_appbar.dart';
 import 'package:ui_maker/components/wgs_sider_bar.dart';
-import 'package:ui_maker/ctrl.dart';
+import 'package:ui_maker/controller/ctrl.dart';
 
 class WidetDeleteBtn extends StatelessWidget {
   const WidetDeleteBtn({
@@ -16,16 +16,16 @@ class WidetDeleteBtn extends StatelessWidget {
         width: 204,
         child: Button(
           style: ButtonStyle(
-            shape: ButtonState.all(RoundedRectangleBorder()),
-            textStyle: ButtonState.all(TextStyle(
+            shape: ButtonState.all(const RoundedRectangleBorder()),
+            textStyle: ButtonState.all(const TextStyle(
               fontSize: 10,
               color: Colors.black,
             )),
             backgroundColor: ButtonState.all(
-              Color(0xff668FCD),
+              const Color(0xff668FCD),
             ),
           ),
-          child: Text(
+          child: const Text(
             '위젯 모두 삭제하기',
             style: TextStyle(color: Colors.black),
           ),
@@ -33,9 +33,6 @@ class WidetDeleteBtn extends StatelessWidget {
             if (Ctrl.to.gridWidgets.isNotEmpty) {
               debugPrint('위젯 첫번째 위치정보 ${Ctrl.to.gridWidgets.first.left}');
             }
-
-            final Widget newWidget =
-                addWidget(Ctrl.to.selectedWidgetForAdd.value);
 
             Ctrl.to.gridWidgets.clear();
 
@@ -60,7 +57,7 @@ class WidetDeleteBtn extends StatelessWidget {
       case '커스텀':
         return Container(
           color: Colors.orange,
-          child: Text('위젯'),
+          child: const Text('위젯'),
         );
       default:
         return Container();

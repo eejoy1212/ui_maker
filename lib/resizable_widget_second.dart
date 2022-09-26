@@ -1,5 +1,6 @@
+// ignore_for_file: sort_child_properties_last, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:resizable_widget/resizable_widget.dart';
 
 class ResizableSecond extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:ui_maker/components/wgs_appbar.dart';
 import 'package:ui_maker/components/wgs_sider_bar.dart';
-import 'package:ui_maker/ctrl.dart';
+import 'package:ui_maker/controller/ctrl.dart';
 
 class WidgetModifyBtn extends StatelessWidget {
   const WidgetModifyBtn({
@@ -31,19 +31,28 @@ class WidgetModifyBtn extends StatelessWidget {
         width: 204,
         child: Button(
             style: ButtonStyle(
-              shape: ButtonState.all(RoundedRectangleBorder()),
+              backgroundColor: ButtonState.all(Ctrl.to.gridWidgets
+                      .where((p0) => p0.isHide.isFalse)
+                      .isNotEmpty
+                  ? const Color(0xff668FCD)
+                  : Colors.grey),
+              shape: ButtonState.all(const RoundedRectangleBorder()),
               textStyle: ButtonState.all(const TextStyle(
                 fontSize: 10,
                 color: Colors.black,
               )),
-              border: ButtonState.all(const BorderSide(
-                color: Color(0xff668FCD),
-              )),
+              // border: ButtonState.all(const BorderSide(
+              //   color: Color(0xff668FCD),
+              // )),
             ),
             child: Text(
               '위젯 수정하기',
               style: TextStyle(
-                color: Color(0xff668FCD),
+                color: Ctrl.to.gridWidgets
+                        .where((p0) => p0.isHide.isFalse)
+                        .isNotEmpty
+                    ? Colors.black
+                    : Colors.white.withOpacity(0.5),
               ),
             ),
             onPressed: () {
@@ -93,7 +102,7 @@ class WidgetModifyBtn extends StatelessWidget {
   }
 
   void showModifyError(String errComponent, BuildContext context) {
-    final snackbar = Snackbar(content: Text(errComponent + '을(를) 수정해 주세요'));
+    final snackbar = Snackbar(content: Text('$errComponent을(를) 수정해 주세요'));
     showSnackbar(context, snackbar);
   }
 
@@ -104,10 +113,7 @@ class WidgetModifyBtn extends StatelessWidget {
       case '사이드바':
         return const WGSSideBar();
       case '커스텀':
-        return Container(
-          // color: Colors.tr,
-          child: Center(child: Text('$name\nclassName:$className')),
-        );
+        return Center(child: Text('$name\nclassName:$className'));
       default:
         return Container();
     }

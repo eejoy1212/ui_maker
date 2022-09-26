@@ -10,7 +10,7 @@ class LoginCard extends StatelessWidget {
     return Container(
       width: 216,
       decoration:
-          BoxDecoration(color: Color(0xff1A1A1A), boxShadow: cardShadow),
+          BoxDecoration(color: const Color(0xff1A1A1A), boxShadow: cardShadow),
       child: Padding(
         padding: const EdgeInsets.all(6),
         child: Column(
@@ -52,16 +52,16 @@ class LoginCard extends StatelessWidget {
                   width: 98,
                   child: Button(
                     style: ButtonStyle(
-                      shape: ButtonState.all(RoundedRectangleBorder()),
-                      textStyle: ButtonState.all(TextStyle(
+                      shape: ButtonState.all(const RoundedRectangleBorder()),
+                      textStyle: ButtonState.all(const TextStyle(
                         fontSize: 10,
                         color: Colors.black,
                       )),
                       backgroundColor: ButtonState.all(
-                        Color(0xff668FCD),
+                        const Color(0xff668FCD),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Sign Out',
                       style: TextStyle(color: Colors.black),
                     ),
@@ -72,16 +72,16 @@ class LoginCard extends StatelessWidget {
                   width: 98,
                   child: Button(
                     style: ButtonStyle(
-                      shape: ButtonState.all(RoundedRectangleBorder()),
-                      textStyle: ButtonState.all(TextStyle(
+                      shape: ButtonState.all(const RoundedRectangleBorder()),
+                      textStyle: ButtonState.all(const TextStyle(
                         fontSize: 10,
                         color: Colors.black,
                       )),
                       backgroundColor: ButtonState.all(
-                        Color(0xff668FCD),
+                        const Color(0xff668FCD),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Modify',
                       style: TextStyle(color: Colors.black),
                     ),

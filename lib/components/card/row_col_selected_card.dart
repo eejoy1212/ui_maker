@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,8 +9,8 @@ import 'package:ui_maker/components/button/helper_btn.dart';
 import 'package:ui_maker/components/button/widget_add_btn.dart';
 import 'package:ui_maker/components/button/widget_delete_btn.dart';
 import 'package:ui_maker/components/button/widget_modify_btn.dart';
-import 'package:ui_maker/components/show_selected_widget_btn.dart';
-import 'package:ui_maker/ctrl.dart';
+import 'package:ui_maker/components/button/show_selected_widget_btn.dart';
+import 'package:ui_maker/controller/ctrl.dart';
 import 'package:ui_maker/main.dart';
 import 'package:ui_maker/style/color.dart';
 import 'package:ui_maker/style/text.dart';
@@ -19,8 +21,6 @@ class RowColSelectCard extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    RxString modifiedwidgetName = ''.obs;
-    String modifiedclassName = '';
     int modifiedmenuId = 0;
     int modifiedmenuSubId = 0;
     int modifiedchildPosId = 0;
@@ -93,19 +93,32 @@ class RowColSelectCard extends StatelessWidget {
                           SizedBox(
                               width: 160 - 22 - 6 - 6 - 6,
                               child: AutoSuggestBox(
-                                  controller: TextEditingController(
-                                      text: Ctrl.to.filteredMenuId.value
-                                          .toString()),
+                                  clearButtonEnabled: false,
+                                  // trailingIcon: GestureDetector(
+                                  //     onTap: () {
+                                  //       Ctrl.to.filteredMenuId.value = 0;
+                                  //     },
+                                  //     child: Icon(FluentIcons.clear)),
+                                  placeholder: 'select menu id',
+                                  // controller: TextEditingController(
+                                  //     text: Ctrl.to.filteredMenuId.value
+                                  //         .toString()),
                                   onChanged: (v, _) {
                                     if (v != '') {
                                       final int id = int.tryParse(v) ?? 0;
                                       Ctrl.to.filteredMenuId.value = id;
+                                    }
+                                    if (v == '') {
+                                      Ctrl.to.filteredMenuId.value = 0;
                                     }
                                   },
                                   onSelected: (v) {
                                     if (v != '') {
                                       final int id = int.tryParse(v) ?? 0;
                                       Ctrl.to.filteredMenuId.value = id;
+                                    }
+                                    if (v == '') {
+                                      Ctrl.to.filteredMenuId.value = 0;
                                     }
                                   },
                                   items: List.generate(
@@ -131,9 +144,16 @@ class RowColSelectCard extends StatelessWidget {
                           SizedBox(
                               width: 160 - 22 - 6 - 6 - 6,
                               child: AutoSuggestBox(
-                                controller: TextEditingController(
-                                    text: Ctrl.to.filteredMenuSubId.value
-                                        .toString()),
+                                clearButtonEnabled: false,
+                                // trailingIcon: GestureDetector(
+                                //     onTap: () {
+                                //       Ctrl.to.filteredMenuSubId.value = 0;
+                                //     },
+                                //     child: Icon(FluentIcons.clear)),
+                                placeholder: 'select sub id',
+                                // controller: TextEditingController(
+                                //     text: Ctrl.to.filteredMenuSubId.value
+                                //         .toString()),
                                 items: List.generate(
                                     100, (index) => (index + 1).toString()),
                                 onChanged: (v, _) {
@@ -141,16 +161,25 @@ class RowColSelectCard extends StatelessWidget {
                                     final int id = int.tryParse(v) ?? 0;
                                     Ctrl.to.filteredMenuSubId.value = id;
                                   }
+                                  if (v == '') {
+                                    Ctrl.to.filteredMenuSubId.value = 0;
+                                  }
                                 },
                                 onSelected: (v) {
                                   if (v != '') {
                                     final int id = int.tryParse(v) ?? 0;
                                     Ctrl.to.filteredMenuSubId.value = id;
                                   }
+                                  if (v == '') {
+                                    Ctrl.to.filteredMenuSubId.value = 0;
+                                  }
                                 },
                               )),
                         ])),
-                const ShowSelectedWidgetBtn(),
+                Ctrl.to.filteredMenuId.value == 0 &&
+                        Ctrl.to.filteredMenuSubId.value == 0
+                    ? const ShowAllWidgetBtn()
+                    : const ShowSelectedWidgetBtn(),
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 6.0),
                   child: Divider(),
@@ -158,10 +187,10 @@ class RowColSelectCard extends StatelessWidget {
                 // Obx(() =>
 
                 Ctrl.to.gridWidgets.where((p0) => p0.isHide.isFalse).isNotEmpty
-                    ? ModifiedContents(
+                    ? const ModifiedContents(
                         // modifiedWidgetName: modifiedwidgetName,
                         )
-                    : NewContents(), // ),
+                    : const NewContents(), // ),
                 WidgetModifyBtn(
                   widgetName: Ctrl.to.modifiedswidgetName.value,
                   className: Ctrl.to.modifiedClassName.value,
@@ -234,6 +263,9 @@ class NewContents extends StatelessWidget {
                     ),
                   ),
                 ])),
+        const SizedBox(
+          height: 8,
+        ),
         SizedBox(
             width: 204,
             height: 30,
@@ -254,6 +286,9 @@ class NewContents extends StatelessWidget {
                         },
                       )),
                 ])),
+        const SizedBox(
+          height: 8,
+        ),
         SizedBox(
             width: 204,
             height: 30,
@@ -277,6 +312,9 @@ class NewContents extends StatelessWidget {
                         },
                       )),
                 ])),
+        const SizedBox(
+          height: 8,
+        ),
         SizedBox(
             width: 204,
             height: 30,
@@ -294,11 +332,15 @@ class NewContents extends StatelessWidget {
                           FilteringTextInputFormatter.digitsOnly
                         ],
                         onChanged: (v) {
-                          Ctrl.to.selectedSubMenuId.value = int.parse(v);
-                          if (v != '') {}
+                          if (v != '') {
+                            Ctrl.to.selectedSubMenuId.value = int.parse(v);
+                          }
                         },
                       ))
                 ])),
+        const SizedBox(
+          height: 8,
+        ),
         SizedBox(
             width: 204,
             height: 30,
@@ -369,6 +411,9 @@ class ModifiedContents extends StatelessWidget {
                         ),
                       )),
                 ])),
+        const SizedBox(
+          height: 8,
+        ),
         SizedBox(
             width: 204,
             height: 30,
@@ -393,6 +438,9 @@ class ModifiedContents extends StatelessWidget {
                             )),
                       ))
                 ])),
+        const SizedBox(
+          height: 8,
+        ),
         SizedBox(
             width: 204,
             height: 30,
@@ -420,6 +468,9 @@ class ModifiedContents extends StatelessWidget {
                             )),
                       ))
                 ])),
+        const SizedBox(
+          height: 8,
+        ),
         SizedBox(
             width: 204,
             height: 30,
@@ -444,6 +495,9 @@ class ModifiedContents extends StatelessWidget {
                         )),
                   )
                 ])),
+        const SizedBox(
+          height: 8,
+        ),
         SizedBox(
             width: 204,
             height: 30,

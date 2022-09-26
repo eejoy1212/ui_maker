@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import, implementation_imports, sized_box_for_whitespace
+
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -17,7 +19,7 @@ class WGSAppBar extends StatelessWidget {
           Container(
             width: 1920,
             height: 28,
-            color: Color(0xff1a1a1a),
+            color: const Color(0xff1a1a1a),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -28,46 +30,46 @@ class WGSAppBar extends StatelessWidget {
                   width: 45.67,
                   height: 20,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 105,
                 ),
                 Row(
-                  children: [Icon(FluentIcons.t_v_monitor), Text('Main')],
+                  children: const [Icon(FluentIcons.t_v_monitor), Text('Main')],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 13,
                 ),
                 Row(
-                  children: [Icon(FluentIcons.t_v_monitor), Text('Main')],
+                  children: const [Icon(FluentIcons.t_v_monitor), Text('Main')],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 13,
                 ),
                 Row(
-                  children: [Icon(FluentIcons.t_v_monitor), Text('Main')],
+                  children: const [Icon(FluentIcons.t_v_monitor), Text('Main')],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 13,
                 ),
                 Row(
-                  children: [Icon(FluentIcons.t_v_monitor), Text('Main')],
+                  children: const [Icon(FluentIcons.t_v_monitor), Text('Main')],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 13,
                 ),
                 Row(
-                  children: [Icon(FluentIcons.t_v_monitor), Text('Main')],
+                  children: const [Icon(FluentIcons.t_v_monitor), Text('Main')],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 13,
                 ),
                 Row(
-                  children: [Icon(FluentIcons.t_v_monitor), Text('Main')],
+                  children: const [Icon(FluentIcons.t_v_monitor), Text('Main')],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 13,
                 ),
-                Spacer()
+                const Spacer()
               ],
             ),
           ),

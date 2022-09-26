@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'dart:developer';
 
 import 'package:fluent_ui/fluent_ui.dart';
@@ -12,7 +14,7 @@ class Ctrl extends GetxController {
   static bool get isPut => Get.isRegistered<Ctrl>();
   // Size appSize = Size(0, 0);
   // Rx<Offset> offset = Offset(0, 0).obs;
-  Rx<Color> selectedColor = Color(0xff4692ce).obs;
+  Rx<Color> selectedColor = const Color(0xff4692ce).obs;
   RxDouble height = 214.0.obs;
   RxDouble width = 192.0.obs;
   RxInt selectedPage = 0.obs;
@@ -62,7 +64,7 @@ class Ctrl extends GetxController {
     const Color(0xff6062ad),
     const Color(0xffb6bcd6),
     const Color(0xffc496a3),
-    const Color(0xff1f4b8c), Color(0xff1f4b8c), Color(0xffe0ab7f),
+    const Color(0xff1f4b8c), const Color(0xff1f4b8c), const Color(0xffe0ab7f),
     const Color(0xffbac2c5),
     const Color(0xff00f6ed)
   ];
@@ -96,7 +98,7 @@ class Ctrl extends GetxController {
   //   idx: 0,
   //   isShowContext: false,
   // );
-  RxList<Offset> offsetList = RxList.filled(1, Offset(0, 0));
+  RxList<Offset> offsetList = RxList.filled(1, const Offset(0, 0));
 
   List<double> handleDrag(
       DragStartDetails details, double initX, double initY) {

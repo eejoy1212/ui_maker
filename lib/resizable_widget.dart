@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, unused_local_variable, prefer_const_declarations, non_constant_identifier_names, avoid_types_as_parameter_names, must_be_immutable, prefer_const_constructors, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, dead_code, sort_child_properties_last
+
 import 'dart:developer';
 import 'package:contextmenu/contextmenu.dart';
 import 'package:fluent_ui/fluent_ui.dart';
@@ -5,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ui_maker/components/widget_selector_badge.dart';
 import 'package:ui_maker/components/button/widget_selector_btn.dart';
-import 'package:ui_maker/ctrl.dart';
+import 'package:ui_maker/controller/ctrl.dart';
 import 'package:ui_maker/style/color.dart';
 import 'package:ui_maker/style/text.dart';
 
@@ -269,8 +271,8 @@ class UIMakerResizebleWidget extends StatelessWidget {
   final bool isShowContext;
   double ballDiameter = 10;
   Rx<Color> widgetColor = Colors.transparent.obs;
-  RxDouble height = 100.0.obs; //10.17*6
-  RxDouble width = 20.0.obs; //19.2*6
+  RxDouble height = 200.0.obs; //10.17*6
+  RxDouble width = 200.0.obs; //19.2*6
 
   RxDouble top = 0.0.obs;
   RxDouble left = 0.0.obs;
@@ -737,8 +739,7 @@ class UIMakerResizebleWidget extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                      child: Text('top(%)', style: cardTitle)),
+                                  Text('top(%)', style: cardTitle),
                                   SizedBox(
                                       width: 97,
                                       child: TextBox(
@@ -762,8 +763,7 @@ class UIMakerResizebleWidget extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                      child: Text('left(%)', style: cardTitle)),
+                                  Text('left(%)', style: cardTitle),
                                   SizedBox(
                                       width: 97,
                                       child: TextBox(
@@ -794,8 +794,7 @@ class UIMakerResizebleWidget extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Container(
-                                        child: Text('너비', style: cardTitle)),
+                                    Text('너비', style: cardTitle),
                                     SizedBox(
                                       width: 100,
                                       child: Combobox(
@@ -1145,10 +1144,16 @@ class UIMakerResizebleWidget extends StatelessWidget {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(name.value),
-                                          Text(className.value),
-                                          Text(menuId.value.toString()),
-                                          Text(menuSubId.value.toString())
+                                          Text('widgetname : ${name.value}'),
+                                          Text(
+                                              'classname : ${className.value}'),
+                                          Text('menuId : ${menuId.value}'),
+                                          Text(
+                                              'menuSubId : ${menuSubId.value}'),
+                                          Text(
+                                              'top : ${(top.value / 3.6).toStringAsFixed(2)}'),
+                                          Text(
+                                              'left : ${(left.value / 6.4).toStringAsFixed(2)}')
                                         ],
                                       )),
                                 )),
@@ -1392,10 +1397,10 @@ class UIMakerResizebleWidget extends StatelessWidget {
   }
 
   void saveFile() {
-    Ctrl.to.gridWidgetsForFile[idx].height = height.value;
-    Ctrl.to.gridWidgetsForFile[idx].top = top.value;
-    Ctrl.to.gridWidgetsForFile[idx].left = left.value;
-    Ctrl.to.gridWidgetsForFile[idx].width = width.value;
+    Ctrl.to.gridWidgetsForFile[idx].height = height.value / 3.6;
+    Ctrl.to.gridWidgetsForFile[idx].top = top.value / 3.6;
+    Ctrl.to.gridWidgetsForFile[idx].left = left.value / 6.4;
+    Ctrl.to.gridWidgetsForFile[idx].width = width.value / 6.4;
     Ctrl.to.gridWidgetsForFile[idx].color = widgetColor.value;
   }
 

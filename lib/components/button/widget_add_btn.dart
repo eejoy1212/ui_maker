@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:ui_maker/components/wgs_appbar.dart';
 import 'package:ui_maker/components/wgs_sider_bar.dart';
-import 'package:ui_maker/ctrl.dart';
+import 'package:ui_maker/controller/ctrl.dart';
 import 'package:ui_maker/main.dart';
 import 'package:ui_maker/model/grid_widget.dart';
 import 'package:ui_maker/resizable_widget.dart';
@@ -29,15 +29,15 @@ class WidgetAddBtn extends StatelessWidget {
               Ctrl.to.gridWidgets.where((p0) => p0.isHide.isFalse).isNotEmpty,
           child: Button(
             style: ButtonStyle(
-              shape: ButtonState.all(RoundedRectangleBorder()),
-              textStyle: ButtonState.all(TextStyle(
+              shape: ButtonState.all(const RoundedRectangleBorder()),
+              textStyle: ButtonState.all(const TextStyle(
                 fontSize: 10,
                 color: Colors.black,
               )),
               backgroundColor: ButtonState.all(
                 Ctrl.to.gridWidgets.where((p0) => p0.isHide.isFalse).isNotEmpty
                     ? Colors.grey
-                    : Color(0xff668FCD),
+                    : const Color(0xff668FCD),
               ),
             ),
             child: Text(
@@ -79,15 +79,11 @@ class WidgetAddBtn extends StatelessWidget {
                     debugPrint('위젯 첫번째 위치정보 ${Ctrl.to.gridWidgets.first.left}');
                   }
 
-                  final Widget newWidget = addWidget(
-                      Ctrl.to.selectedWidgetForAdd.value,
-                      Ctrl.to.widgetName.value,
-                      Ctrl.to.selectedClassName.value);
                   final int idx = Ctrl.to.gridWidgets.length;
                   log('분할 해상도 ${MediaQuery.of(context).size.width / 3}');
                   Ctrl.to.gridWidgets.add(UIMakerResizebleWidget(
                     idx: idx,
-                    widgetColor: Color(0xff4692ce).obs,
+                    widgetColor: const Color(0xff4692ce).obs,
                     childPosId: Ctrl.to.selectedChildPosId,
                     name: Ctrl.to.widgetName,
                     className: Ctrl.to.selectedClassName,
@@ -95,12 +91,15 @@ class WidgetAddBtn extends StatelessWidget {
                     menuSubId: Ctrl.to.selectedSubMenuId,
                     // child: newWidget,
                   ));
-
+                  final double newWidth =
+                      Ctrl.to.gridWidgets.last.width.value / 6.4;
+                  final double newHeight =
+                      Ctrl.to.gridWidgets.last.height.value / 3.6;
                   Ctrl.to.gridWidgetsForFile.add(GridWidget(
                     top: 0.0,
                     left: 0.0,
-                    width: 100 * MediaQuery.of(context).size.width / 3,
-                    height: 20.0 * MediaQuery.of(context).size.height / 3,
+                    width: newWidth,
+                    height: newHeight,
                     name: Ctrl.to.widgetName.value,
                     color: Ctrl.to.selectedColor.value,
                     childPosId: Ctrl.to.selectedChildPosId.value,
@@ -132,10 +131,7 @@ class WidgetAddBtn extends StatelessWidget {
       case '사이드바':
         return const WGSSideBar();
       case '커스텀':
-        return Container(
-          // color: Colors.tr,
-          child: Center(child: Text('$name\nclassName:$className')),
-        );
+        return Center(child: Text('$name\nclassName:$className'));
       default:
         return Container();
     }

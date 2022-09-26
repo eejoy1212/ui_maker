@@ -1,8 +1,8 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors, sort_child_properties_last
+
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:ui_maker/ctrl.dart';
+import 'package:ui_maker/controller/ctrl.dart';
 
 class CustomResizableWidget extends StatefulWidget {
   @override
@@ -169,7 +169,7 @@ class WidgetSet extends StatelessWidget {
           height: 1890,
           color: Colors.teal,
           child: Column(
-            children: [
+            children: const [
               Text('1'),
             ],
           ),
@@ -187,7 +187,7 @@ class WidgetSet extends StatelessWidget {
           height: 1890,
           color: Colors.teal,
           child: Column(
-            children: [
+            children: const [
               Text('1'),
             ],
           ),
@@ -271,7 +271,7 @@ class _DragDividerState extends State<DragDivider> {
               height: 1890,
               color: Colors.red,
               child: Column(
-                children: [
+                children: const [
                   Text(
                     '1',
                     style: TextStyle(color: Colors.transparent),

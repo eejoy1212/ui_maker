@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:ui_maker/style/text.dart';
 
@@ -8,12 +10,12 @@ class VersionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 216,
-      decoration: BoxDecoration(color: Color(0xff1A1A1A), boxShadow: [
+      decoration: BoxDecoration(color: const Color(0xff1A1A1A), boxShadow: [
         BoxShadow(
-          color: Color(0xff0C0A0B).withOpacity(0.8),
+          color: const Color(0xff0C0A0B).withOpacity(0.8),
           spreadRadius: 5,
           blurRadius: 10,
-          offset: Offset(2, 6), // changes position of shadow
+          offset: const Offset(2, 6), // changes position of shadow
         ),
       ]),
       child: Padding(
@@ -22,8 +24,8 @@ class VersionCard extends StatelessWidget {
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
+              children: const [
+                SizedBox(
                     width: 93, child: Text('Vision Model', style: cardTitle)),
                 Text(
                   '1.0.1.77',
@@ -33,8 +35,8 @@ class VersionCard extends StatelessWidget {
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
+              children: const [
+                SizedBox(
                     width: 93, child: Text('Launching Time', style: cardTitle)),
                 Text(
                   '9/2/2022    1:42:35 PM',
@@ -44,9 +46,8 @@ class VersionCard extends StatelessWidget {
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                    width: 93, child: Text('Life Time', style: cardTitle)),
+              children: const [
+                SizedBox(width: 93, child: Text('Life Time', style: cardTitle)),
                 Text(
                   '00.00:02:34',
                   style: cardContentsGreenHighlight,

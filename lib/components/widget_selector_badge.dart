@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import, implementation_imports
+
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';

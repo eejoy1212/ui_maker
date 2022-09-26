@@ -14,16 +14,16 @@ class HelperBtn extends StatelessWidget {
         width: 204,
         child: Button(
           style: ButtonStyle(
-            shape: ButtonState.all(RoundedRectangleBorder()),
-            textStyle: ButtonState.all(TextStyle(
+            shape: ButtonState.all(const RoundedRectangleBorder()),
+            textStyle: ButtonState.all(const TextStyle(
               fontSize: 10,
               color: Colors.black,
             )),
             backgroundColor: ButtonState.all(
-              Color(0xff668FCD),
+              const Color(0xff668FCD),
             ),
           ),
-          child: Text(
+          child: const Text(
             '도움말',
             style: TextStyle(color: Colors.black),
           ),

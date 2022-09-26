@@ -8,12 +8,12 @@ class VisionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 216,
-      decoration: BoxDecoration(color: Color(0xff1A1A1A), boxShadow: [
+      decoration: BoxDecoration(color: const Color(0xff1A1A1A), boxShadow: [
         BoxShadow(
-          color: Color(0xff0C0A0B).withOpacity(0.8),
+          color: const Color(0xff0C0A0B).withOpacity(0.8),
           spreadRadius: 5,
           blurRadius: 10,
-          offset: Offset(2, 6), // changes position of shadow
+          offset: const Offset(2, 6), // changes position of shadow
         ),
       ]),
       child: Padding(
