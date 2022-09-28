@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -23,11 +24,14 @@ GlobalKey three = GlobalKey();
 //파일에 저장된거는 픽셀. 입력받는거는 비율, 퍼센트
 void main() async {
   Get.lazyPut(() => Ctrl());
+  Ctrl.to.isLoading.value = true;
   initUI();
   // // Ctrl.to.dialogWidget.add(UIControllerDialog(child: RowColSelectCard()));
   initDialog();
   Ctrl.to.init();
   await resolutionInit();
+  Ctrl.to.isLoading.value = false;
+
   runApp(const MyApp());
 }
 
@@ -110,9 +114,12 @@ void initUI() {
       Ctrl.to.gridWidgets[k].widgetColor.value =
           Ctrl.to.gridWidgetsForFile[k].color;
     }
-    Ctrl.to.selectedWidget.value = Ctrl.to.gridWidgetsForFile.first.name;
-    Ctrl.to.selectedWidthWidget.value = Ctrl.to.gridWidgetsForFile.first.name;
-    Ctrl.to.selectedHeightWidget.value = Ctrl.to.gridWidgetsForFile.first.name;
+    // Ctrl.to.selectedWidget.value = Ctrl.to.gridWidgetsForFile.first.name;
+    // Ctrl.to.selectedWidthWidget.value = Ctrl.to.gridWidgetsForFile.first.name;
+    // Ctrl.to.selectedHeightWidget.value = Ctrl.to.gridWidgetsForFile.first.name;
+    Ctrl.to.selectedWidget.value = Ctrl.to.gridWidgets.first.name.value;
+    Ctrl.to.selectedWidthWidget.value = Ctrl.to.gridWidgets.first.name.value;
+    Ctrl.to.selectedHeightWidget.value = Ctrl.to.gridWidgets.first.name.value;
   }
 }
 
@@ -218,18 +225,24 @@ class UIMaker extends StatelessWidget {
                   // color: Colors.black,
                   child: Stack(alignment: Alignment.topRight, children: [
                     GestureDetector(
-                        onTap: () {
-                          log('그리드 탭 되나요');
-                          Ctrl.to.modifiedswidgetName.value = '';
-                          Ctrl.to.modifiedClassName.value = '';
-                          Ctrl.to.modifiedMenuId.value = '';
-                          Ctrl.to.modifiedSubMenuId.value = '';
-                          Ctrl.to.modifiedChildPosId.value = '';
-                          for (var element in Ctrl.to.gridWidgets) {
-                            element.isHide.value = true;
-                          }
-                        },
-                        child: const ChildPosArea()),
+                      onTap: () {
+                        log('그리드 탭 되나요');
+                        Ctrl.to.modifiedswidgetName.value = '';
+                        Ctrl.to.modifiedClassName.value = '';
+                        Ctrl.to.modifiedMenuId.value = '';
+                        Ctrl.to.modifiedSubMenuId.value = '';
+                        Ctrl.to.modifiedChildPosId.value = '';
+                        Ctrl.to.widgetName.value = '';
+                        Ctrl.to.selectedMenuId.value = 1;
+                        Ctrl.to.selectedSubMenuId.value = 1;
+                        Ctrl.to.selectedClassName.value = '';
+                        Ctrl.to.selectedChildPosId.value = 0;
+                        for (var element in Ctrl.to.gridWidgets) {
+                          element.isHide.value = true;
+                        }
+                      },
+                      child: const ChildPosArea(),
+                    ),
 
                     ///child_pos_id별로 구역 나눈 거
 
@@ -343,6 +356,16 @@ class UIMaker extends StatelessWidget {
                             },
                           )
                         ],
+                      ),
+                    ),
+                    Visibility(
+                      visible: Ctrl.to.isLoading.value,
+                      child: Center(
+                        child: LoadingAnimationWidget.twistingDots(
+                          leftDotColor: WGSColors.logo,
+                          rightDotColor: Colors.teal,
+                          size: 80,
+                        ),
                       ),
                     )
                   ]));

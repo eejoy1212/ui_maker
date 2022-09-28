@@ -25,78 +25,81 @@ class WidgetModifyBtn extends StatelessWidget {
   // final String name;
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: SizedBox(
-        width: 204,
-        child: Button(
-            style: ButtonStyle(
-              backgroundColor: ButtonState.all(Ctrl.to.gridWidgets
-                      .where((p0) => p0.isHide.isFalse)
-                      .isNotEmpty
-                  ? const Color(0xff668FCD)
-                  : Colors.grey),
-              shape: ButtonState.all(const RoundedRectangleBorder()),
-              textStyle: ButtonState.all(const TextStyle(
-                fontSize: 10,
-                color: Colors.black,
-              )),
-              // border: ButtonState.all(const BorderSide(
-              //   color: Color(0xff668FCD),
-              // )),
-            ),
-            child: Text(
-              '위젯 수정하기',
-              style: TextStyle(
-                color: Ctrl.to.gridWidgets
+    return IgnorePointer(
+      ignoring: Ctrl.to.gridWidgets.where((p0) => p0.isHide.isFalse).isEmpty,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: SizedBox(
+          width: 204,
+          child: Button(
+              style: ButtonStyle(
+                backgroundColor: ButtonState.all(Ctrl.to.gridWidgets
                         .where((p0) => p0.isHide.isFalse)
                         .isNotEmpty
-                    ? Colors.black
-                    : Colors.white.withOpacity(0.5),
+                    ? const Color(0xff668FCD)
+                    : Colors.grey),
+                shape: ButtonState.all(const RoundedRectangleBorder()),
+                textStyle: ButtonState.all(const TextStyle(
+                  fontSize: 10,
+                  color: Colors.black,
+                )),
+                // border: ButtonState.all(const BorderSide(
+                //   color: Color(0xff668FCD),
+                // )),
               ),
-            ),
-            onPressed: () {
-              // final int nowIdx = Ctrl.to.gridWidgets
-              //     .indexWhere((element) => element.isHide.isFalse);
-              // String errComponent = '';
+              child: Text(
+                '위젯 수정하기',
+                style: TextStyle(
+                  color: Ctrl.to.gridWidgets
+                          .where((p0) => p0.isHide.isFalse)
+                          .isNotEmpty
+                      ? Colors.black
+                      : Colors.white.withOpacity(0.5),
+                ),
+              ),
+              onPressed: () {
+                // final int nowIdx = Ctrl.to.gridWidgets
+                //     .indexWhere((element) => element.isHide.isFalse);
+                // String errComponent = '';
 
-              final int selWidgetIdx =
-                  //  Ctrl.to.gridWidgets
-                  //             .indexWhere((p0) => p0.isHide.isFalse) ==
-                  //         -1
-                  //     ? 0
-                  // :
-                  Ctrl.to.gridWidgets.indexWhere((p0) => p0.isHide.isFalse);
-              log('수정 할 위젯 : ${Ctrl.to.gridWidgetsForFile[selWidgetIdx].name}');
-              if (widgetName != '') {
-                Ctrl.to.gridWidgets[selWidgetIdx].name.value = widgetName;
-                Ctrl.to.gridWidgetsForFile[selWidgetIdx].name =
-                    Ctrl.to.gridWidgets[selWidgetIdx].name.value;
-              }
-              if (className != '') {
-                Ctrl.to.gridWidgets[selWidgetIdx].className.value = className;
-                Ctrl.to.gridWidgetsForFile[selWidgetIdx].className =
-                    Ctrl.to.gridWidgets[selWidgetIdx].className.value;
-              }
-              if (menuId != '') {
-                Ctrl.to.gridWidgets[selWidgetIdx].menuId.value =
-                    int.tryParse(menuId) ?? 0;
-                Ctrl.to.gridWidgetsForFile[selWidgetIdx].menuId =
-                    Ctrl.to.gridWidgets[selWidgetIdx].menuId.value;
-              }
-              if (menuSubId != '') {
-                Ctrl.to.gridWidgets[selWidgetIdx].menuSubId.value =
-                    int.tryParse(menuSubId) ?? 0;
-                Ctrl.to.gridWidgetsForFile[selWidgetIdx].menuSubId =
-                    Ctrl.to.gridWidgets[selWidgetIdx].menuSubId.value;
-              }
-              if (childPosId != '') {
-                Ctrl.to.gridWidgets[selWidgetIdx].childPosId.value =
-                    (int.tryParse(childPosId) ?? 0);
-                Ctrl.to.gridWidgetsForFile[selWidgetIdx].childPosId =
-                    Ctrl.to.gridWidgets[selWidgetIdx].childPosId.value;
-              }
-            }),
+                final int selWidgetIdx =
+                    //  Ctrl.to.gridWidgets
+                    //             .indexWhere((p0) => p0.isHide.isFalse) ==
+                    //         -1
+                    //     ? 0
+                    // :
+                    Ctrl.to.gridWidgets.indexWhere((p0) => p0.isHide.isFalse);
+                log('수정 할 위젯 : ${Ctrl.to.gridWidgetsForFile[selWidgetIdx].name}');
+                if (widgetName != '') {
+                  Ctrl.to.gridWidgets[selWidgetIdx].name.value = widgetName;
+                  Ctrl.to.gridWidgetsForFile[selWidgetIdx].name =
+                      Ctrl.to.gridWidgets[selWidgetIdx].name.value;
+                }
+                if (className != '') {
+                  Ctrl.to.gridWidgets[selWidgetIdx].className.value = className;
+                  Ctrl.to.gridWidgetsForFile[selWidgetIdx].className =
+                      Ctrl.to.gridWidgets[selWidgetIdx].className.value;
+                }
+                if (menuId != '') {
+                  Ctrl.to.gridWidgets[selWidgetIdx].menuId.value =
+                      int.tryParse(menuId) ?? 0;
+                  Ctrl.to.gridWidgetsForFile[selWidgetIdx].menuId =
+                      Ctrl.to.gridWidgets[selWidgetIdx].menuId.value;
+                }
+                if (menuSubId != '') {
+                  Ctrl.to.gridWidgets[selWidgetIdx].menuSubId.value =
+                      int.tryParse(menuSubId) ?? 0;
+                  Ctrl.to.gridWidgetsForFile[selWidgetIdx].menuSubId =
+                      Ctrl.to.gridWidgets[selWidgetIdx].menuSubId.value;
+                }
+                if (childPosId != '') {
+                  Ctrl.to.gridWidgets[selWidgetIdx].childPosId.value =
+                      (int.tryParse(childPosId) ?? 0);
+                  Ctrl.to.gridWidgetsForFile[selWidgetIdx].childPosId =
+                      Ctrl.to.gridWidgets[selWidgetIdx].childPosId.value;
+                }
+              }),
+        ),
       ),
     );
   }

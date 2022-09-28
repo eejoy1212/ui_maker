@@ -54,6 +54,7 @@ class Ctrl extends GetxController {
   RxInt newMenuId = 0.obs;
   RxInt newSubMenuId = 0.obs;
   RxInt newChildPosId = 0.obs;
+  RxBool isLoading = false.obs;
   List<Color> colors = [
     // Colors.errorPrimaryColor,
     const Color(0xff4692ce),

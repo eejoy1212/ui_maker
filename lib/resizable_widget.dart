@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, unused_local_variable, prefer_const_declarations, non_constant_identifier_names, avoid_types_as_parameter_names, must_be_immutable, prefer_const_constructors, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, dead_code, sort_child_properties_last
+// ignore_for_file: use_key_in_widget_constructors, unused_local_variable, prefer_const_declarations, non_constant_identifier_names, avoid_types_as_parameter_names, must_be_immutable, prefer_const_constructors, sized_box_for_whitespace, prefer_const_literals_to_create_immutables, dead_code, sort_child_properties_last, unused_element, library_private_types_in_public_api, unnecessary_this
 
 import 'dart:developer';
 import 'package:contextmenu/contextmenu.dart';
@@ -59,114 +59,6 @@ class UIControllerDialog extends StatelessWidget {
                 width: width.value, height: height.value, child: child),
           ),
         ),
-        // Obx(
-        //   () => Positioned(
-        //     top: top.value - ballDiameter / 2,
-        //     left: left.value + width.value / 2 - ballDiameter / 2,
-        //     child: ManipulatingBall(
-        //       onDrag: (dx, dy) {
-        //         var newHeight = height.value - dy;
-
-        //         // setState(() {
-        //         height.value = newHeight > 0 ? newHeight : 0;
-        //         top.value = top.value + dy;
-
-        //         if (Ctrl.to.dialogForFile.isNotEmpty) {
-        //           saveDialogInfo();
-        //         }
-        //         if (Ctrl.to.dialogForFile.isEmpty) {
-        //           Ctrl.to.dialogForFile.add(GridWidget(
-        //             top: 0.0,
-        //             left: 0.0,
-        //             width: 192.0,
-        //             height: 214.0,
-        //             name: '',
-        //             color: Colors.transparent,
-        //             childPosId: 4,
-        //             className: '',
-        //             menuId: 0,
-        //             menuSubId: 0,
-        //           ));
-        //         }
-        //       },
-        //       onDoubleTapDown: (TapDownDetails) {},
-        //     ),
-        //   ),
-        // ),
-        // Obx(
-        //   () => Positioned(
-        //     top: top.value + height.value / 2 - ballDiameter / 2,
-        //     left: left.value + width.value - ballDiameter / 2,
-        //     child: ManipulatingBall(
-        //       onDrag: (dx, dy) {
-        //         var newWidth = width.value + dx;
-
-        //         width.value = newWidth > 0 ? newWidth : 0;
-        //         if (Ctrl.to.dialogForFile.isNotEmpty) {
-        //           saveDialogInfo();
-        //         }
-        //         // if (Ctrl.to.dialogForFile.isEmpty) {
-        //         //   Ctrl.to.dialogForFile.add(GridWidget(
-        //         //     top: top.value,
-        //         //     left: left.value,
-        //         //     width: Ctrl.to.width.value,
-        //         //     height: Ctrl.to.height.value,
-        //         //     name: '',
-        //         //     color: Colors.transparent,
-        //         //   ));
-        //         // }
-        //       },
-        //       onDoubleTapDown: (TapDownDetails) {},
-        //     ),
-        //   ),
-        // ),
-        // Obx(
-        //   () => Positioned(
-        //     top: top.value + height.value - ballDiameter / 2,
-        //     left: left.value + width.value / 2 - ballDiameter / 2,
-        //     child: ManipulatingBall(
-        //       onDrag: (dx, dy) {
-        //         var newHeight = height.value + dy;
-
-        //         // setState(() {
-        //         height.value = newHeight > 0 ? newHeight : 0;
-        //         if (Ctrl.to.dialogForFile.isNotEmpty) {
-        //           saveDialogInfo();
-        //         }
-        //         // if (Ctrl.to.dialogForFile.isEmpty) {
-        //         //   Ctrl.to.dialogForFile.add(GridWidget(
-        //         //     top: top.value,
-        //         //     left: left.value,
-        //         //     width: Ctrl.to.width.value,
-        //         //     height: Ctrl.to.height.value,
-        //         //     name: '',
-        //         //     color: Colors.transparent,
-        //         //   ));
-        //         // }
-        //       },
-        //       onDoubleTapDown: (TapDownDetails) {},
-        //     ),
-        //   ),
-        // ),
-        // Obx(
-        //   () => Positioned(
-        //     top: top.value + height.value / 2 - ballDiameter / 2,
-        //     left: left.value - ballDiameter / 2,
-        //     child: ManipulatingBall(
-        //       onDrag: (dx, dy) {
-        //         var newWidth = width.value - dx;
-
-        //         // setState(() {
-        //         width.value = newWidth > 0 ? newWidth : 0;
-        //         left.value = left.value + dx;
-        //         if (Ctrl.to.dialogForFile.isNotEmpty) {
-        //           saveDialogInfo();
-        //         }
-        //       },
-        //       onDoubleTapDown: (TapDownDetails) {},
-        //     ),
-        //   ),
-        // ),
         Obx(
           () => Positioned(
             top: top.value - 15,
@@ -203,53 +95,6 @@ class UIControllerDialog extends StatelessWidget {
     Ctrl.to.dialogForFile.first.top = top.value;
     Ctrl.to.dialogForFile.first.left = left.value;
   }
-
-  // void manipulateWidth(Object? v) {
-  //   final int selWidthIdx = int.parse(v.toString()) - 1;
-  //   Ctrl.to.selectedWidthWidget.value = v.toString();
-  //   Ctrl.to.gridWidgets[idx].Ctrl.to.width.value =
-  //       Ctrl.to.gridWidgets[selWidthIdx].Ctrl.to.width.value;
-  // }
-
-  // void manipulateHeight(Object? v) {
-  //   final int selHeightIdx = int.parse(v.toString()) - 1;
-  //   Ctrl.to.selectedHeightWidget.value = v.toString();
-  //   Ctrl.to.gridWidgets[idx].Ctrl.to.height.value =
-  //       Ctrl.to.gridWidgets[selHeightIdx].Ctrl.to.height.value;
-  // }
-
-  // void attachWidget(Object? v, String direction, double distance) {
-  //   // Ctrl.to.selectedWidget.value = v.toString();
-  //   final int selIdx = int.parse(Ctrl.to.selectedWidget.value) - 1;
-  //   //갖다붙일 오프셋
-  //   final Offset attachOffset = Offset(
-  //     Ctrl.to.gridWidgets[selIdx].left.value,
-  //     Ctrl.to.gridWidgets[selIdx].top.value,
-  //   );
-  //   if (direction == '오른쪽') {
-  //     Ctrl.to.gridWidgets[idx].left.value =
-  //         attachOffset.dx + Ctrl.to.gridWidgets[selIdx].Ctrl.to.width.value + distance;
-  //     Ctrl.to.gridWidgets[idx].top.value = attachOffset.dy; // +
-  //     log('오른쪽 패딩 : ${Ctrl.to.gridWidgets[idx].left.value}');
-  //   }
-  //   if (direction == '왼쪽') {
-  //     Ctrl.to.gridWidgets[idx].left.value =
-  //         attachOffset.dx - Ctrl.to.gridWidgets[idx].Ctrl.to.width.value - distance;
-  //     Ctrl.to.gridWidgets[idx].top.value = attachOffset.dy; // +
-  //   }
-  //   if (direction == '위') {
-  //     Ctrl.to.gridWidgets[idx].left.value = attachOffset.dx;
-  //     Ctrl.to.gridWidgets[idx].top.value = attachOffset.dy -
-  //         Ctrl.to.gridWidgets[idx].Ctrl.to.height.value -
-  //         distance; // +
-  //   }
-  //   if (direction == '아래') {
-  //     Ctrl.to.gridWidgets[idx].left.value = attachOffset.dx;
-  //     Ctrl.to.gridWidgets[idx].top.value = attachOffset.dy +
-  //         Ctrl.to.gridWidgets[selIdx].Ctrl.to.height.value +
-  //         distance; // +
-  //   }
-  // }
 }
 
 class UIMakerResizebleWidget extends StatelessWidget {
@@ -265,7 +110,7 @@ class UIMakerResizebleWidget extends StatelessWidget {
     required this.menuId,
     required this.menuSubId,
   });
-  final int idx;
+  int idx;
   final RxInt childPosId;
   // final Widget child;
   final bool isShowContext;
@@ -318,6 +163,18 @@ class UIMakerResizebleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final double verticalPadding = 2.0;
     final double contextMenuWidth = 200;
+    Ctrl.to.selectedWidthWidget.value = Ctrl.to.gridWidgets
+        .where((p0) => p0.childPosId.value == childPosId.value)
+        .toList()
+        .first
+        .name
+        .value;
+    Ctrl.to.selectedHeightWidget.value = Ctrl.to.gridWidgets
+        .where((p0) => p0.childPosId.value == childPosId.value)
+        .toList()
+        .first
+        .name
+        .value;
     return Obx(() => Visibility(
               visible: !widgetHide.value,
               child: GestureDetector(
@@ -789,73 +646,78 @@ class UIMakerResizebleWidget extends StatelessWidget {
                           header: Text('사이즈 조절'),
                           content: Column(
                             children: [
-                              Obx(
-                                () => Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('너비', style: cardTitle),
-                                    SizedBox(
-                                      width: 100,
-                                      child: Combobox(
-                                        value:
-                                            Ctrl.to.selectedWidthWidget.value,
-                                        items: List.generate(
-                                            Ctrl.to.gridWidgets.length,
-                                            (index) => ComboboxItem(
-                                                  child: Text(Ctrl
-                                                      .to
-                                                      .gridWidgets[index]
-                                                      .name
-                                                      .value),
-                                                  value: Ctrl
-                                                      .to
-                                                      .gridWidgets[index]
-                                                      .name
-                                                      .value,
-                                                )),
-                                        onChanged: (v) {
-                                          Ctrl.to.selectedWidthWidget.value =
-                                              v.toString();
-                                          // final int idx = int.parse(v.toString()) - 1;
-                                          // Ctrl.to.gridWidgets[idx];
-                                          manipulateWidth(v);
-                                          saveFile();
-                                          // attachRight(v); // +
-                                          // Ctrl.to.gridWidgets[selIdx].Ctrl.to.height.value;
-                                          // Navigator.pop(context);
-                                        },
-                                      ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('너비', style: cardTitle),
+                                  SizedBox(
+                                    width: 100,
+                                    child: AutoSuggestBox(
+                                      placeholder:
+                                          Ctrl.to.selectedWidthWidget.value,
+                                      items: List.generate(
+                                          Ctrl.to.gridWidgets
+                                              .where((p0) =>
+                                                  p0.childPosId.value ==
+                                                  childPosId.value)
+                                              .length,
+                                          (index) => Ctrl.to.gridWidgets
+                                              .where((p0) =>
+                                                  p0.childPosId.value ==
+                                                  childPosId.value)
+                                              .toList()[index]
+                                              .name
+                                              .value),
+                                      onChanged: (v, _) {
+                                        Ctrl.to.selectedWidthWidget.value =
+                                            v.toString();
+                                        // final int idx = int.parse(v.toString()) - 1;
+                                        // Ctrl.to.gridWidgets[idx];
+                                        manipulateWidth(v);
+                                        saveFile();
+                                        // attachRight(v); // +
+                                        // Ctrl.to.gridWidgets[selIdx].Ctrl.to.height.value;
+                                        // Navigator.pop(context);
+                                      },
+                                      onSelected: (v) {
+                                        Ctrl.to.selectedWidthWidget.value =
+                                            v.toString();
+                                        // final int idx = int.parse(v.toString()) - 1;
+                                        // Ctrl.to.gridWidgets[idx];
+                                        manipulateWidth(v);
+                                        saveFile();
+                                        // attachRight(v); // +
+                                        // Ctrl.to.gridWidgets[selIdx].Ctrl.to.height.value;
+                                        // Navigator.pop(context);
+                                      },
                                     ),
-                                    // Text('과 너비 맞추기', style: cardTitle)
-                                  ],
-                                ),
+                                  ),
+                                  // Text('과 너비 맞추기', style: cardTitle)
+                                ],
                               ),
-                              Obx(
-                                () => Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                        child: Text('높이', style: cardTitle)),
-                                    SizedBox(
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('높이', style: cardTitle),
+                                  SizedBox(
                                       width: 100,
-                                      child: Combobox(
-                                        value:
-                                            Ctrl.to.selectedHeightWidget.value,
+                                      child: AutoSuggestBox(
                                         items: List.generate(
-                                            Ctrl.to.gridWidgets.length,
-                                            (index) => ComboboxItem(
-                                                  child: Text(
-                                                      '${Ctrl.to.gridWidgets[index].name.value}'),
-                                                  value: (Ctrl
-                                                          .to
-                                                          .gridWidgets[index]
-                                                          .name
-                                                          .value)
-                                                      .toString(),
-                                                )),
-                                        onChanged: (v) {
+                                            Ctrl.to.gridWidgets
+                                                .where((p0) =>
+                                                    p0.childPosId.value ==
+                                                    childPosId.value)
+                                                .length,
+                                            (index) => Ctrl.to.gridWidgets
+                                                .where((p0) =>
+                                                    p0.childPosId.value ==
+                                                    childPosId.value)
+                                                .toList()[index]
+                                                .name
+                                                .value),
+                                        onChanged: (v, _) {
                                           Ctrl.to.selectedHeightWidget.value =
                                               v.toString();
                                           // final int idx = int.parse(v.toString()) - 1;
@@ -866,19 +728,96 @@ class UIMakerResizebleWidget extends StatelessWidget {
                                           // Ctrl.to.gridWidgets[selIdx].Ctrl.to.height.value;
                                           // Navigator.pop(context);
                                         },
+                                        onSelected: (v) {
+                                          Ctrl.to.selectedHeightWidget.value =
+                                              v.toString();
+                                          // final int idx = int.parse(v.toString()) - 1;
+                                          // Ctrl.to.gridWidgets[idx];
+                                          manipulateHeight(v);
+                                          saveFile();
+                                          // attachRight(v); // +
+                                          // Ctrl.to.gridWidgets[selIdx].Ctrl.to.height.value;
+                                          // Navigator.pop(context);
+                                        },
+                                      )
+
+                                      // Obx(() {
+                                      //   log('위젯 그려지는거');
+                                      //   // Ctrl.to.selectedWidget.value =
+                                      //   //     Ctrl.to.gridWidgets.first.name.value;
+
+                                      //   Ctrl.to.selectedWidthWidget.value = Ctrl
+                                      //       .to.gridWidgets
+                                      //       .where((p0) =>
+                                      //           p0.childPosId.value ==
+                                      //           childPosId.value)
+                                      //       .toList()
+                                      //       .first
+                                      //       .name
+                                      //       .value;
+                                      //   return Row(
+                                      //     mainAxisAlignment:
+                                      //         MainAxisAlignment.spaceBetween,
+                                      //     children: [
+                                      //       Text('너비', style: cardTitle),
+                                      //       SizedBox(
+                                      //         width: 100,
+                                      //         child: AutoSuggestBox(
+                                      //           placeholder: Ctrl.to
+                                      //               .selectedWidthWidget.value,
+                                      //           items: List.generate(
+                                      //               Ctrl.to.gridWidgets
+                                      //                   .where((p0) =>
+                                      //                       p0.childPosId
+                                      //                           .value ==
+                                      //                       childPosId.value)
+                                      //                   .length,
+                                      //               (index) => Ctrl
+                                      //                   .to.gridWidgets
+                                      //                   .where((p0) =>
+                                      //                       p0.childPosId
+                                      //                           .value ==
+                                      //                       childPosId.value)
+                                      //                   .toList()[index]
+                                      //                   .name
+                                      //                   .value),
+                                      //           onChanged: (v, _) {
+                                      //             Ctrl.to.selectedWidthWidget
+                                      //                 .value = v.toString();
+                                      //             // final int idx = int.parse(v.toString()) - 1;
+                                      //             // Ctrl.to.gridWidgets[idx];
+                                      //             manipulateWidth(v);
+                                      //             saveFile();
+                                      //             // attachRight(v); // +
+                                      //             // Ctrl.to.gridWidgets[selIdx].Ctrl.to.height.value;
+                                      //             // Navigator.pop(context);
+                                      //           },
+                                      //           onSelected: (v) {
+                                      //             Ctrl.to.selectedWidthWidget
+                                      //                 .value = v.toString();
+                                      //             // final int idx = int.parse(v.toString()) - 1;
+                                      //             // Ctrl.to.gridWidgets[idx];
+                                      //             manipulateWidth(v);
+                                      //             saveFile();
+                                      //             // attachRight(v); // +
+                                      //             // Ctrl.to.gridWidgets[selIdx].Ctrl.to.height.value;
+                                      //             // Navigator.pop(context);
+                                      //           },
+                                      //         ),
+                                      //       ),
+                                      //       // Text('과 너비 맞추기', style: cardTitle)
+                                      //     ],
+                                      //   );
+                                      // }),
                                       ),
-                                    ),
-                                    // Text('과 높이 맞추기', style: cardTitle)
-                                  ],
-                                ),
+                                  // Text('과 높이 맞추기', style: cardTitle)
+                                ],
                               ),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                      child:
-                                          Text('width(%)', style: cardTitle)),
+                                  Text('width(%)', style: cardTitle),
                                   SizedBox(
                                       width: 100,
                                       child: TextBox(
@@ -906,9 +845,7 @@ class UIMakerResizebleWidget extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                      child:
-                                          Text('height(%)', style: cardTitle)),
+                                  Text('height(%)', style: cardTitle),
                                   SizedBox(
                                       width: 100,
                                       child: TextBox(
@@ -944,13 +881,8 @@ class UIMakerResizebleWidget extends StatelessWidget {
                                           onTap: () {
                                             final Color color =
                                                 Ctrl.to.colors[colorIdx];
-                                            final String colorCode = '#' +
-                                                color
-                                                    .toString()
-                                                    .split('0xff')
-                                                    .last
-                                                    .split(')')
-                                                    .first;
+                                            final String colorCode =
+                                                '#${color.toString().split('0xff').last.split(')').first}';
                                             log(color.toString());
                                             final Color selColor =
                                                 colorCode.toColor();
@@ -1027,11 +959,7 @@ class UIMakerResizebleWidget extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               // crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
-                                  // width: 100,
-                                  // height: 48,
-                                  child: Text('맨 위로 '),
-                                ),
+                                Text('맨 위로 '),
                               ],
                             ),
                           ),
@@ -1055,11 +983,7 @@ class UIMakerResizebleWidget extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               // crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
-                                  // width: 100,
-                                  // height: 48,
-                                  child: Text('맨 뒤로 '),
-                                ),
+                                Text('맨 뒤로 '),
                               ],
                             ),
                           ),
@@ -1067,8 +991,22 @@ class UIMakerResizebleWidget extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Ctrl.to.gridWidgets.removeAt(idx);
-                          Ctrl.to.gridWidgetsForFile.removeAt(idx);
+                          // Ctrl.to.gridWidgets.removeAt(idx);
+                          // Ctrl.to.gridWidgetsForFile.removeAt(idx);
+                          // Navigator.pop(context);
+                          final int removeIdx = Ctrl.to.gridWidgets.indexWhere(
+                              (gridWidget) =>
+                                  gridWidget.name.value == name.value);
+                          Ctrl.to.gridWidgets.removeAt(removeIdx);
+                          idx = idx - 1;
+                          Ctrl.to.gridWidgetsForFile.removeAt(removeIdx);
+                          Ctrl.to.selectedWidthWidget.value =
+                              Ctrl.to.gridWidgets.first.name.value;
+                          Ctrl.to.selectedHeightWidget.value =
+                              Ctrl.to.gridWidgets.first.name.value;
+                          // Ctrl.to.selectedWidthWidget.value =
+                          //     Ctrl.to.gridWidgets.first.name.value;
+                          log('삭제버튼');
                           Navigator.pop(context);
                         },
                         child: Padding(
@@ -1083,11 +1021,7 @@ class UIMakerResizebleWidget extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               // crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
-                                  // width: 100,
-                                  // height: 48,
-                                  child: Text('삭제하기'),
-                                ),
+                                Text('삭제하기'),
                                 SizedBox(
                                     // width: 62,
                                     child: Icon(
@@ -1191,9 +1125,13 @@ class UIMakerResizebleWidget extends StatelessWidget {
                                   child: const Text('그리드 밖을 벗어날 수 없습니다.'),
                                 ));
                                 showSnackbar(context, snackbar);
+                                // if (checkTop < 0.0 || checkLeft < 0.0) {
+                                //   top.value = 0;
+                                //   left.value = 0;
+                                // }
                               } else {
-                                top.value = top.value + dy;
-                                left.value = left.value + dx;
+                                top.value = checkTop;
+                                left.value = checkLeft;
                               }
                               if (idx != -1) {
                                 Ctrl.to.gridWidgetsForFile[idx].top = top.value;
@@ -1465,7 +1403,7 @@ class UIMakerResizebleWidget extends StatelessWidget {
 }
 
 class ManipulatingBall extends StatefulWidget {
-  ManipulatingBall({
+  const ManipulatingBall({
     Key? key,
     required this.onDrag,
     this.width = 10,
@@ -1632,7 +1570,7 @@ extension ColorExtension on String {
   toColor() {
     var hexColor = this.replaceAll("#", "");
     if (hexColor.length == 6) {
-      hexColor = "FF" + hexColor;
+      hexColor = "FF$hexColor";
     }
     if (hexColor.length == 8) {
       return Color(int.parse("0x$hexColor"));

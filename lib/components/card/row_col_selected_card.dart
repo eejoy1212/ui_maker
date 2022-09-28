@@ -203,7 +203,12 @@ class RowColSelectCard extends StatelessWidget {
                     description: '이 버튼을 누르면 위젯이 추가됩니다.',
                     child: WidgetAddBtn(
                       widgetForAdd: Ctrl.to.selectedWidgetForAdd.value,
-                      name: Ctrl.to.widgetName.value,
+                      name: '',
+                      childPosId: Ctrl.to.selectedChildPosId.value.toString(),
+                      className: Ctrl.to.selectedClassName.value,
+                      menuId: Ctrl.to.selectedMenuId.value.toString(),
+                      menuSubId: Ctrl.to.selectedSubMenuId.value.toString(),
+                      widgetName: Ctrl.to.widgetName.value,
                     )),
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 6.0),

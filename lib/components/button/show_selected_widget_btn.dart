@@ -21,17 +21,20 @@ class ShowSelectedWidgetBtn extends StatelessWidget {
               const Color(0xff668FCD),
             ),
           ),
+          // ignore: sort_child_properties_last
           child: const Text(
             '해당 위젯만 보기',
             style: TextStyle(color: Colors.black),
           ),
-          onPressed: showWidget,
+          onPressed: () {
+            showWidget(context);
+          },
         ),
       ),
     );
   }
 
-  void showWidget() {
+  void showWidget(BuildContext context) {
     for (var i = 0; i < Ctrl.to.gridWidgets.length; i++) {
       if (((Ctrl.to.filteredMenuId.value) ==
                   Ctrl.to.gridWidgets[i].menuId.value &&
@@ -41,6 +44,11 @@ class ShowSelectedWidgetBtn extends StatelessWidget {
         Ctrl.to.gridWidgets[i].widgetHide.value = false;
       } else {
         Ctrl.to.gridWidgets[i].widgetHide.value = true;
+        const Snackbar snackbar = Snackbar(content: Text('해당 위젯이 없습니다.'));
+        showSnackbar(context, snackbar);
+        // for (var gridWidget in Ctrl.to.gridWidgets) {
+        //   gridWidget.widgetHide.value = false;
+        // }
       }
     }
   }
